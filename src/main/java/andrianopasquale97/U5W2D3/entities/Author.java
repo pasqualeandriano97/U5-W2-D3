@@ -22,8 +22,7 @@ public class Author {
     private String email;
     private String dateOfBirth;
     private String avatar;
-    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Blogpost> blogPosts = new ArrayList<>();
+
 
     @Override
     public String toString() {

@@ -26,7 +26,7 @@ public class BlogsService {
     public void save(Blogpost blogpost) {
 
         blogpost.setCover("https://picsum.photos/200/300");
-        this.save(blogpost);
+        this.blogPostDAO.save(blogpost);
 
     }
 
@@ -36,8 +36,8 @@ public class BlogsService {
         return this.blogPostDAO.findAll(pageable);
     }
 
-    public Blogpost findById(int authorId) {
-        return this.blogPostDAO.findById(authorId).orElseThrow(() -> new NotFoundException(authorId));
+    public Blogpost findById(int postId) {
+        return this.blogPostDAO.findById(postId).orElseThrow(() -> new NotFoundException(postId));
     }
 
     public void findByIdAndDelete(int id) {

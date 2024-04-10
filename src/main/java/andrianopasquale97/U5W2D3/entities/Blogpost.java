@@ -1,15 +1,12 @@
 package andrianopasquale97.U5W2D3.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
 @Setter
 @AllArgsConstructor
-
+@NoArgsConstructor
 @Entity
 @Table(name = "blogPosts")
 public class Blogpost {
