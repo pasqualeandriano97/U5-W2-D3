@@ -1,5 +1,6 @@
 package andrianopasquale97.U5W2D3.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -22,7 +23,9 @@ public class Author {
     private String email;
     private String dateOfBirth;
     private String avatar;
-
+    @OneToMany(mappedBy = "author")
+    @JsonIgnore
+    private List<Blogpost> blogposts = new ArrayList<>();
 
     @Override
     public String toString() {

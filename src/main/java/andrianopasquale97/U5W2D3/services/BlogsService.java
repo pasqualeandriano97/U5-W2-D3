@@ -23,10 +23,10 @@ public class BlogsService {
     @Autowired
     private BlogPostDAO blogPostDAO;
 
-    public void save(Blogpost blogpost) {
+    public Blogpost save(Blogpost blogpost) {
 
         blogpost.setCover("https://picsum.photos/200/300");
-        this.blogPostDAO.save(blogpost);
+       return this.blogPostDAO.save(blogpost);
 
     }
 
