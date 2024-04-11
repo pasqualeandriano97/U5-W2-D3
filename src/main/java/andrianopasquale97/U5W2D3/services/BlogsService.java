@@ -5,6 +5,7 @@ import andrianopasquale97.U5W2D3.entities.Author;
 import andrianopasquale97.U5W2D3.entities.Blogpost;
 import andrianopasquale97.U5W2D3.exceptions.NotFoundException;
 
+import andrianopasquale97.U5W2D3.payloads.BlogPostDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -45,13 +46,13 @@ public class BlogsService {
         this.blogPostDAO.delete(found);
     }
 
-    public Blogpost findByIdAndUpdate(int id, Blogpost body) {
+    public Blogpost findByIdAndUpdate(int id, BlogPostDTO body) {
         Blogpost found = this.findById(id);
-        found.setCover(body.getCover());
-        found.setTitle(body.getTitle());
-        found.setCategory(body.getCategory());
-        found.setContent(body.getContent());
-        found.setReadingTime(body.getReadingTime());
+        found.setCover(body.cover());
+        found.setTitle(body.title());
+        found.setCategory(body.category());
+        found.setContent(body.content());
+        found.setReadingTime(body.readingTime());
         return found;
 
     }

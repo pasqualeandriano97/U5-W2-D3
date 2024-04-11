@@ -1,17 +1,15 @@
 package andrianopasquale97.U5W2D3.controllers;
 
 
-import andrianopasquale97.U5W2D3.entities.Author;
 import andrianopasquale97.U5W2D3.entities.Blogpost;
-import andrianopasquale97.U5W2D3.payloads.BlogPostPayload;
+import andrianopasquale97.U5W2D3.payloads.BlogPostDTO;
 import andrianopasquale97.U5W2D3.services.AuthorsService;
 import andrianopasquale97.U5W2D3.services.BlogsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/blogs")
@@ -24,9 +22,9 @@ public class BlogsController {
     // 1. - POST http://localhost:3001/blogs (+ req.body)
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED) // <-- 201
-    public Blogpost blogpost(@RequestBody BlogPostPayload body) throws Exception {
+    public Blogpost blogpost(@RequestBody @Validated  BlogPostDTO body) throws Exception {
 
-        Blogpost blogpost1 = new Blogpost(body.getCategory(), body.getTitle(),body.getCover(), body.getContent(),body.getReadingTime(), authorsService.findById(body.getAuthorId()));
+        Blogpost blogpost1 = new Blogpost(body.category(), body.title(),body.cover(), body.content(),body.readingTime(), authorsService.findById(body.authorId()));
 
          blogsService.save(blogpost1);
          return blogpost1;
@@ -48,7 +46,7 @@ public class BlogsController {
 
     // 4. - PUT http://localhost:3001/blogs/{id} (+ req.body)
     @PutMapping("/{blogId}")
-    public Blogpost findAndUpdate(@PathVariable int blogId, @RequestBody Blogpost body) {
+    public Blogpost findAndUpdate(@PathVariable int blogId, @RequestBody BlogPostDTO body) {
         return blogsService.findByIdAndUpdate(blogId, body);
     }
 

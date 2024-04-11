@@ -27,6 +27,14 @@ public class Author {
     @JsonIgnore
     private List<Blogpost> blogposts = new ArrayList<>();
 
+    public Author(String name, String surname, String email, String dateOfBirth, String avatar) {
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.dateOfBirth = dateOfBirth;
+        this.avatar = avatar;
+    }
+
     @Override
     public String toString() {
         return "Author{" +
